@@ -2,15 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const dotenv= require('dotenv').config();
+
 
 var app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:4200' }));
-
-app.listen(3000, () => console.log('Server started at port : 3000'));
+const PORT = process.env.PORT || 3030;
+app.listen(PORT, () => console.log(`Server started at port : ${PORT}`));
 
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1:27017/AngularCrud', (err) =>{
+mongoose.connect(process.env.MONGO_URI, (err) =>{
     if(!err)
     console.log('MongoDB connection succeeded.');
     else
