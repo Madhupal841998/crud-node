@@ -7,7 +7,7 @@ const dotenv= require('dotenv').config();
 
 var app = express();
 app.use(bodyParser.json());
-pp.use(function (req, res, next) {
+app.use(function (req, res, next) {
 
     res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN);
 
