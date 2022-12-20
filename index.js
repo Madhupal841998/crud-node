@@ -7,7 +7,8 @@ const dotenv= require('dotenv').config();
 
 var app = express();
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://localhost:4200' }));
+
+app.use(cors({ origin: process.env.ORIGIN }));
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => console.log(`Server started at port : ${PORT}`));
 
